@@ -2,6 +2,8 @@
 
 Trabalho final RIWRS oferta3
 
+Alunos: Leandro Oliveira, Leandro Cruvinel, Elder Vicente
+
 Requisitos:
 
 python 3.6
