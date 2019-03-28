@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <title>PUC Minas</title>
+    <!-- Bootstrap -->
+    <link href="https://storage.googleapis.com/api-core-test/ejhack/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="https://storage.googleapis.com/api-core-test/ejhack/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="https://storage.googleapis.com/api-core-test/ejhack/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="https://storage.googleapis.com/api-core-test/ejhack/bootstrap-progressbar-3.3.4.min.css"
+        rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="https://storage.googleapis.com/api-core-test/ejhack/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="https://storage.googleapis.com/api-core-test/ejhack/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="https://storage.googleapis.com/api-core-test/ejhack/custom.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="https://storage.googleapis.com/api-core-test/ejhack/custom.css" rel="stylesheet">
+
+    <style>
+        .site_title i {
+            border: none;
+            padding: 5px 6px;
+            border-radius: 50%;
+        }
+
+        .menu-separator {
+            margin: 5px 13px;
+            border-color: #3b5167;
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="/" class="site_title">
+                            <!-- <i class="fa fa-bar-chart"></i> -->
+                            <span>PUC Minas</span>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="https://storage.googleapis.com/api-core-test/ejhack/img.jpg" alt="..."
+                                class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Bem vindo,</span>
+                            <h2>Leandro Oliveira</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3></h3>
+                            <hr class="menu-separator">
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a>
+                                        <i class="fa fa-angle-right"></i> Dashboard
+                                        <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="/">Relatório</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /sidebar menu -->
+            </div>
+        </div>
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        {% block content %} {% endblock content %}
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                PUC Minas
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+    </div>
+    <!-- jQuery -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/skycons.js"></script>
+    <!-- Flot -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.flot.js"></script>
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.flot.pie.js"></script>
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.flot.time.js"></script>
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.flot.stack.js"></script>
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.flot.orderBars.js"></script>
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.flot.spline.min.js"></script>
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/date.js"></script>
+    <!-- JQVMap -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.vmap.js"></script>
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.vmap.world.js"></script>
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/moment.min.js"></script>
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/daterangepicker.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="https://storage.googleapis.com/api-core-test/ejhack/yota.js"></script>
+
+    {% block scripts %} {% endblock scripts %}
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="modal_load hide">
+    <div class="loader loader--style2" title="1">
+        <svg class="loader_item" version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 50 50"
+            style="enable-background:new 0 0 50 50;" xml:space="preserve">
+            <path fill="#000"
+                d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25"
+                    to="360 25 25" dur="0.6s" repeatCount="indefinite" />
+            </path>
+        </svg>
+    </div>
+</div>
+
+<div class="right_col" role="main">
+
+    <div class="row">
+        <div class="title_right">
+            <div class="col-md-4 col-sm-4 col-md-offset-4 col-sm-offset-4 col-xs-12 form-group top_search">
+                <div class="form-group">
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select id="searchBox" class="form-control" style="display: inline;">
+                            <option value="riachuelo.csv">Riachuelo</option>
+                        </select>
+                    </div>
+                    <span class="input-group-btn">
+                        <button id="searchButton" class="btn btn-success" type="button">OK</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Número de comentários -->
+    <div class="col-md-3 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Extração de dados</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content hide">
+                <h5>Número de comentários</h5>
+                <div>
+                    <div id="count" class="count"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Gráfico -->
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Diagnóstico
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content hide">
+                <div class="row tile_count">
+                    <div>
+                        <table style="width:100%">
+                            <tr>
+                                <th style="width:37%;">
+                                    <p>Resultado</p>
+                                </th>
+                                <th>
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                        <p>Sentimento</p>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                        <p>Percentual</p>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <canvas class="chart2" height="140" width="140"
+                                        style="margin: 15px 10px 10px 0"></canvas>
+                                </td>
+                                <td>
+                                    <table class="tile_info">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        <i class="fa fa-square green"></i>Positivos </p>
+                                                </td>
+                                                <td id="positivePercent"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        <i class="fa fa-square red"></i>Negativos </p>
+                                                </td>
+                                                <td id="negativePercent"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        <i class="fa fa-square"></i>Neutro </p>
+                                                </td>
+                                                <td id="neutroPercent"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %} {% block scripts %}
+
+<script>
+    $(document).ajaxComplete(function () {
+        $(".modal_load").addClass("hide");
+    });
+
+    $("#searchButton").click(function () {
+
+        name = $("#searchBox").val();
+
+        if (name != "0") {
+
+            $(".modal_load").removeClass("hide");
+
+            $.ajax({
+                // url: "http://ej5-backend.us-east-1.elasticbeanstalk.com",
+                url: "http://127.0.0.1:5000",
+                type: "get", //send it through get method
+                data: {
+                    name: name
+                },
+                success: function (response) {
+
+                    $("div.x_content").removeClass("hide");
+                    $(".modal_load").addClass("hide");
+
+                    console.log(response);
+
+                    var data = response
+
+                    $("#count").html(data["total"]);
+
+                    $("#positivePercent").html(data["positive"]["percent"] + "%");
+                    $("#negativePercent").html(data["negative"]["percent"] + "%");
+                    $("#neutroPercent").html(data["neutro"]["percent"] + "%");
+
+                    $("#tagPositive1").html(data["positive"]["tags"][0]);
+                    $("#tagPositive2").html(data["positive"]["tags"][1]);
+                    $("#tagPositive3").html(data["positive"]["tags"][2]);
+
+                    $("#tagNegative1").html(data["negative"]["tags"][0]);
+                    $("#tagNegative2").html(data["negative"]["tags"][1]);
+                    $("#tagNegative3").html(data["negative"]["tags"][2]);
+
+                    var values = [];
+
+                    values.push(data["negative"]["percent"]);
+                    values.push(data["positive"]["percent"]);
+                    values.push(data["neutro"]["percent"]);
+
+                    init_chart2(values);
+                },
+                error: function (xhr) {
+                    alert("Algo de errado não está certo ");
+                    $("div.x_content").removeClass("hide");
+                }
+            });
+        }
+    });
+</script>
+{% endblock scripts %}
