@@ -10,7 +10,7 @@ click==6.7
 docutils==0.14
 durationpy==0.5
 Flask==1.0.2
-Flask-Cors==3.0.6
+Flask-Cors==3.0.9
 Flask-S3==0.3.3
 future==0.16.0
 hjson==3.0.1
